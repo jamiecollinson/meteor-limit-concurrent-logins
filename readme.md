@@ -6,6 +6,10 @@ Each time a login happens we stamp that `resume` token according to the device t
 
 Meteor reactively watches the login tokens and automatically logs out any session which loses it's token.
 
+# Usage
+
+Install Meteor, check out this repo then `npm install && npm start`
+
 # Warnings
 
 This uses the private `Accounts._getLoginToken` method, which could presumably change in the future.
