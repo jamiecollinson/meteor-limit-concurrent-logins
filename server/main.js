@@ -2,10 +2,16 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import bowser from 'bowser';
 
+const detectDeviceFromUserAgent = userAgent => {
+  const device = bowser._detect(userAgent);
+  if (device.tablet) return 'tablet';
+  if (device.mobile) return 'mobile';
+  return 'desktop';
+};
+
 Accounts.onLogin(({ connection, user }) => {
   const currentHashedToken = Accounts._getLoginToken(connection.id);
-  const device = bowser._detect(connection.httpHeaders['user-agent']);
-  const deviceType = device.mobile || device.tablet ? 'mobile' : 'desktop';
+  const deviceType = detectDeviceFromUserAgent(connection.httpHeaders['user-agent']);
   Meteor.users.update(
     {
       _id: user._id,
