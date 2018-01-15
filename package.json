@@ -1,0 +1,12 @@
+{
+  "name": "meteor-concurrent-logins",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bowser": "^1.9.1",
+    "meteor-node-stubs": "^0.3.2"
+  }
+}
